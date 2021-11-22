@@ -1,0 +1,23 @@
+.card, .titulo {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  text-align: center;
+  border: 0.1px solid rgb(216, 216, 216);
+  box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+}
+.titulo{
+  margin-top: 2.5rem;
+  border-radius: 4px;
+}
+.form-control{
+  margin-top: 0.7rem;
+  width: 10rem;
+}
+
+
+@media (max-width: 992px) {
+  .titulo{
+    margin-top: -3.5rem;
+  }
+}

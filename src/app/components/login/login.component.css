@@ -1,0 +1,43 @@
+.formulario {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 0.1px solid rgb(216, 216, 216);
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+}
+
+.option{
+    border: 0.1px solid rgb(216, 216, 216);
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+    margin-top: 3rem;
+}
+
+.spinner-border{
+    position: absolute;
+    right: 30px;
+}
+
+.login {
+    height: 470px;
+}
+
+@media (max-width: 992px) {
+    .option{
+        margin-top: -3.5rem;
+        text-align: center;
+    }
+
+    .buttons button{
+        margin: 2px !important;
+    }
+    .formulario {
+        margin-top: 1rem;
+    }
+
+}

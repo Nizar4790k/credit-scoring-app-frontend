@@ -1,0 +1,29 @@
+<section class="py-6 inicio">
+    <div class="row g-0 h-100">
+      <div class="col-lg-12 d-flex">
+        <div class="content mx-auto align-self-center px-4 my-5">
+          <div class="titulo bg-light">
+            <div class="buttons align-self-center my-1 mt-2">
+                <h3 class="text-primary lead fw-bold">Calcular score</h3>
+            </div>
+          </div>
+          <div class="card bg-light">
+            <div class="card-body">
+              <form [formGroup]="clienteForm" (ngSubmit)="buscarCliente()">
+                <i [style.color]="entradaAlerta()" class="fas fa-user-circle fa-2x"></i>
+                <!-- CODE INPUT -->
+                <div class="input-group mb-3">
+                    <input [style.border-color]="entradaAlerta()" type="text" class="form-control" 
+                    placeholder="Codigo del cliente" formControlName="usercode" autofocus required>
+                </div>
+                <div>
+                  <input [disabled]="this.clienteForm.invalid" class="btn btn-primary btn-sm mb-2" 
+                  type="submit" value="Buscar" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

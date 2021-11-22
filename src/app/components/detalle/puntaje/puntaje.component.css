@@ -1,0 +1,43 @@
+.container{
+    margin: 3rem 0;
+}
+
+.score, .proba{
+    border: 0.1px solid rgb(216, 216, 216);
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+    background-color: #ffffff98;
+    height: 100%;
+    border-color: #ececec !important;
+    padding: 0 10px;
+}
+
+.arc-text{
+    position: relative;
+    bottom: 50px;
+}
+
+@media (max-width: 992px) {
+    .container{
+        display: block !important;
+    }
+    .col-lg-4{
+        margin-bottom: 2rem;
+    }
+
+    .score{
+        padding-bottom: 50px;
+    }
+
+    .arc-text{
+        height: 0;
+    }
+}
+
+@media (max-width: 395px) {
+    .text-secondary{
+        text-align: center;
+    }
+    .arc-text{
+        bottom: 10px;
+    }
+}

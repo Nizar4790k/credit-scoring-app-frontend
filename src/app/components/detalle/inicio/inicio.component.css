@@ -1,0 +1,9 @@
+.row{
+    margin: 10rem 0;
+}
+
+@media (max-width: 992px) {
+    .row{
+        margin: 5rem 0;
+    }
+}

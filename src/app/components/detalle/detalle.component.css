@@ -1,0 +1,78 @@
+.detalle{
+    overflow: hidden;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+    height: 600px;
+    background-color: #fff;
+}
+
+#sidebar-container{
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+    min-height: 50vh;
+    background-color: rgb(173, 56, 138);
+    border-radius: 5px;
+}
+
+#sidebar-container .logo{
+    padding: .875rem 1.25rem;
+}
+
+#sidebar-container .menu{
+    width: 13rem;
+}
+
+a{
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+a:hover, a:hover i{
+    text-decoration: none;
+    font-weight: 700 !important;
+}
+
+.navbar{
+    border: 0.1px solid rgb(216, 216, 216);
+    border-radius: 5px;
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+    background-color: rgb(243, 96, 206);
+}
+
+.nombre{
+    padding: 1rem;
+    border: 0.1px solid rgb(216, 216, 216);
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+}
+
+.info{
+    border: 0.1px solid rgb(216, 216, 216);
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+    border-radius: 5px;
+    background-color: white;
+    margin-top: .5rem;
+}
+
+.info .container .row{
+    margin: 10rem 0;
+}
+
+@media (max-width: 992px) {
+    .detalle{
+        margin: -4rem 0 0 !important;
+        padding-bottom: 0 !important;
+        height: unset;
+    }
+
+    #sidebar-container{
+        display: none;
+    }
+    .navbar{
+        display: block !important;
+    }
+    .nombre, .info{
+        margin: 1rem 0 !important
+    }
+}

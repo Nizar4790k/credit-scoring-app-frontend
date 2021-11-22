@@ -1,0 +1,46 @@
+<section class="login">
+    <div class="row g-0 h-100">
+      <div class="col-lg-12 d-flex">
+        <div class="content mx-auto align-self-center px-4 my-5">
+            <div class="option card bg-light">
+                <div class="buttons align-self-center my-3">
+                    <button [disabled]="!boton" (click)="cambiarActor('c')" class="d-inline btn btn-primary me-1">
+                        <i class="fas fa-user ms-1"></i> Cliente
+                    </button>
+                    <button [disabled]="boton" (click)="cambiarActor('e')" class="d-inline btn btn-primary ms-1">
+                        <i class="fas fa-user-tie ms-1"></i> Empleado
+                    </button>
+                </div>
+            </div>
+            <div class="formulario card bg-light">
+                <div class="card-body">
+                    <div *ngIf="spinner" class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="fw-bold lead mb-3 mt-2">Iniciar sesión</p>
+                    <form [formGroup]="usuarioForm" (ngSubmit)="buscarExisteUsuario()">
+                        <!-- CODE INPUT -->
+                        <div *ngIf="!boton" class="input-group mb-3">
+                            <span class="input-group-text"><i [style.color]="estiloInput('usercode')" class="fas fa-address-card"></i></span>
+                            <input type="text" class="form-control" placeholder="Ingresar codigo" formControlName="usercode" autofocus required>
+                        </div>
+                        <!-- USERNAME INPUT -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i [style.color]="estiloInput('user')" class="fas fa-user-circle"></i></span>
+                            <input type="text" class="form-control" placeholder="Ingresar usuario" formControlName="user" required>
+                        </div>
+                            <!-- PASSWORD INPUT -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i [style.color]="estiloInput('pass')" class="fas fa-key"></i></span>
+                            <input  type="password" class="form-control" placeholder="Ingresar contraseña" formControlName="pass" required>
+                        </div>
+                        <div>
+                            <input [disabled]="this.usuarioForm.invalid" class="btn btn-primary mb-2" type="submit" value="Iniciar" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>

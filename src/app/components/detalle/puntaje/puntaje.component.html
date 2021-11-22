@@ -1,0 +1,48 @@
+<section class="puntaje">
+    <div class="mt-3 mx-3">
+        <h3 class="text-secondary fw-bold">Este es el puntaje de {{cliente}}:</h3>
+    </div>
+    <div class="container d-flex">
+        <div class="col-lg-4">
+            <div class="score border rounded-1 mx-5">
+                <h3 class="text-center fw-bold mt-3 mb-0 text-primary">Credit score:</h3>
+                <round-progress class="arc mt-4"
+                    [current]="datos.CreditScore"
+                    [max]="1000"
+                    [color]="color"
+                    [background]="'#eaeaea'"
+                    [radius]="100"
+                    [stroke]="15"
+                    [semicircle]="true"
+                    [rounded]="true"
+                    [clockwise]="true"
+                    [responsive]="true"
+                    [duration]="800"
+                    [animation]="'easeInOutQuart'"
+                    [animationDelay]="0">
+                </round-progress>
+                <div class="arc-text">
+                    <span class="text-center d-block">{{datos.CreditScore}}</span>
+                    <span class="text-center d-block">Puntos</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="proba border rounded-1 mx-5">
+                <h3 class="text-center fw-bold mt-3 mb-0 text-primary">Probabilidad de no pagar:</h3>
+                <circle-progress class="d-flex justify-content-center" [percent]="datos.ProbabilidadImpago * 100" [radius]="75"
+                 [outerStrokeWidth]="10" [innerStrokeWidth]="100" [outerStrokeColor]="color" 
+                 [innerStrokeColor]="'rgb(216, 216, 216)'" [animation]="true" [animationDuration]="300" 
+                 [showSubtitle]="false" [animationDuration]="800"
+                ></circle-progress>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="score border rounded-1 mx-5">
+                <h3 class="text-center fw-bold mt-3 mb-3 text-primary">Años como cliente:</h3>
+                <p class="text-center fw-bold fs-4 mt-5 mb-0 text-secondary">{{datos.AniosCliente}}</p>
+                <p class="text-center fw-bold fs-4 mt-1 mb-0 text-secondary">años</p>
+            </div>
+        </div>
+    </div>
+</section>
