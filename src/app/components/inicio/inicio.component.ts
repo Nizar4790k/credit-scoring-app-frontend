@@ -26,6 +26,9 @@ export class InicioComponent implements OnInit {
 
   buscarCliente(){
     
+    const cliente = this.clienteForm.get('usercode')?.value;
+
+    this.router.navigateByUrl('/detalle/' + cliente)
   }
   
   entradaAlerta(): string{

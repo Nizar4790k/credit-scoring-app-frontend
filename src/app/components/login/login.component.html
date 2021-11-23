@@ -19,15 +19,10 @@
                     </div>
                     <p class="fw-bold lead mb-3 mt-2">Iniciar sesión</p>
                     <form [formGroup]="usuarioForm" (ngSubmit)="buscarExisteUsuario()">
-                        <!-- CODE INPUT -->
-                        <div *ngIf="!boton" class="input-group mb-3">
-                            <span class="input-group-text"><i [style.color]="estiloInput('usercode')" class="fas fa-address-card"></i></span>
-                            <input type="text" class="form-control" placeholder="Ingresar codigo" formControlName="usercode" autofocus required>
-                        </div>
                         <!-- USERNAME INPUT -->
                         <div class="input-group mb-3">
                             <span class="input-group-text"><i [style.color]="estiloInput('user')" class="fas fa-user-circle"></i></span>
-                            <input type="text" class="form-control" placeholder="Ingresar usuario" formControlName="user" required>
+                            <input type="text" class="form-control" placeholder="Ingresar usuario" formControlName="user" autofocus required>
                         </div>
                             <!-- PASSWORD INPUT -->
                         <div class="input-group mb-3">

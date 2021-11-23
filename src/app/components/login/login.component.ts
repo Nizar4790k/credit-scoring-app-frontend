@@ -11,17 +11,13 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuarioForm: FormGroup;
+  usuarioForm!: FormGroup;
   spinner = false;
   boton = false;
   
     constructor(private fb: FormBuilder, private toastr: ToastrService,
       private usuarioServices: UsuarioService, private router: Router) { 
-      this.usuarioForm = this.fb.group({
-        usercode: ["", [Validators.required, Validators.minLength(5)]],
-        user: ["", [Validators.required, Validators.minLength(5)]],
-        pass: ["", [Validators.required, Validators.minLength(5)]]
-      })
+      this.cargarForm();
     }
 
   ngOnInit(): void {
@@ -39,7 +35,6 @@ export class LoginComponent implements OnInit {
     }
 
     const usuario: Iusuario = {
-      codigo: this.usuarioForm.get('usercode')?.value,
       user: this.usuarioForm.get('user')?.value,
       pass: this.usuarioForm.get('pass')?.value
     };
@@ -78,23 +73,19 @@ export class LoginComponent implements OnInit {
   }
 
   cambiarActor(actor: string){
+    this.cargarForm();
     if(actor == 'c'){
       this.boton = false
     }
-    else{
-      if(this.boton){
-        this.usuarioForm = this.fb.group({
-          user: ["", [Validators.required, Validators.minLength(5)]],
-          pass: ["", [Validators.required, Validators.minLength(5)]]
-        })
-      }
-      else{
-        this.usuarioForm = this.fb.group({
-          user: ["", [Validators.required, Validators.minLength(5)]],
-          pass: ["", [Validators.required, Validators.minLength(5)]]
-        })
-        this.boton = true
-      }
-    }
+    else{        
+      this.boton = true      
+    }    
+  }
+
+  cargarForm(){
+    this.usuarioForm = this.fb.group({
+      user: ["", [Validators.required, Validators.minLength(5)]],
+      pass: ["", [Validators.required, Validators.minLength(5)]]
+    })  
   }
 }
