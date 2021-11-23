@@ -1,9 +1,10 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import { CreditoActualComponent } from './credito-actual/credito-actual.component';
 import { PuntajeComponent } from './puntaje/puntaje.component';
 import { SiguienteCreditoComponent } from './siguiente-credito/siguiente-credito.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
   {

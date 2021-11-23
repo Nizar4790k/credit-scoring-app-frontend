@@ -5,7 +5,7 @@
     <div class="container d-flex">
         <div class="col-lg-4">
             <div class="score border rounded-1 mx-5">
-                <h3 class="text-center fw-bold mt-3 mb-0 text-primary fs-4">Credit score:</h3>
+                <h3 class="text-center fw-bold mt-3 mb-0 text-primary fs-5">Credit score:</h3>
                 <round-progress class="arc mt-4"
                     [current]="datos.CreditScore"
                     [max]="1000"
@@ -29,7 +29,7 @@
         </div>
         <div class="col-lg-4">
             <div class="proba border rounded-1 mx-5">
-                <h3 class="text-center fw-bold mt-3 mb-0 text-primary fs-4">Probabilidad de no pagar:</h3>
+                <h3 class="text-center fw-bold mt-3 mb-0 text-primary fs-5">Probabilidad de no pagar:</h3>
                 <circle-progress *ngIf="false" class="d-flex justify-content-center" [percent]="datos.ProbabilidadImpago * 100" [radius]="75"
                  [outerStrokeWidth]="10" [innerStrokeWidth]="100" [outerStrokeColor]="color" 
                  [innerStrokeColor]="'rgb(216, 216, 216)'" [animation]="true" [animationDuration]="300" 
@@ -40,9 +40,9 @@
         </div>
         <div class="col-lg-4">
             <div class="score border rounded-1 mx-5">
-                <h3 class="text-center fw-bold mt-3 mb-3 text-primary fs-4">Años como cliente:</h3>
-                <p class="text-center fw-bold fs-4 mt-4 mb-0 text-secondary">30</p>
-                <p class="text-center fw-bold fs-4 mb-0 text-secondary">años</p>
+                <h3 class="text-center fw-bold mt-3 mb-3 text-primary fs-5">Años como cliente:</h3>
+                <p class="text-center fw-bold fs-3 mt-4 mb-0 text-secondary">30</p>
+                <p class="text-center fw-bold fs-3 mb-0 text-secondary">años</p>
             </div>
         </div>
     </div>

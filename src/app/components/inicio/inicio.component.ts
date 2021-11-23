@@ -11,6 +11,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class InicioComponent implements OnInit {
   clienteForm: FormGroup;
+  spinner = false;
 
   constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService, 
     private toastr: ToastrService) {
@@ -25,7 +26,7 @@ export class InicioComponent implements OnInit {
   }
 
   buscarCliente(){
-    
+    this.spinner = true;
     const cliente = this.clienteForm.get('usercode')?.value;
 
     this.router.navigateByUrl('/detalle/' + cliente)
@@ -39,8 +40,8 @@ export class InicioComponent implements OnInit {
     else if(this.clienteForm.get('usercode')?.valid && this.clienteForm.get('usercode')?.touched) 
       resp = "green";
     else
-      resp = "black";
+      resp = "text-primary";
     
-    return resp;
+    return resp + "!important";
   }
 }

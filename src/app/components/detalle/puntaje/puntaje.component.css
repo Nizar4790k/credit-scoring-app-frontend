@@ -40,4 +40,11 @@
     .arc-text{
         bottom: 10px;
     }
+    h3{
+        font-size: 10px !important;
+    }
+    p, span{
+        font-size: 8px !important;
+    }
+
 }

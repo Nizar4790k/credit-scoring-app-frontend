@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./siguiente-credito.component.css']
 })
 export class SiguienteCreditoComponent implements OnInit {
-
+  servicio = "home";
+  cantidad = 200000;
   constructor() { }
 
   ngOnInit(): void {

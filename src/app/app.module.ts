@@ -12,6 +12,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DetalleComponent } from './components/detalle/detalle.component';
 import { BtnScrollTopComponent } from './components/btn-scroll-top/btn-scroll-top.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BtnScrollTopComponent } from './components/btn-scroll-top/btn-scroll-to
     InicioComponent,
     HeaderComponent,
     DetalleComponent,
-    BtnScrollTopComponent
+    BtnScrollTopComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

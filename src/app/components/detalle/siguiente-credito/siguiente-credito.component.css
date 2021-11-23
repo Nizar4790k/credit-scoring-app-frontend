@@ -1,0 +1,24 @@
+.primero, .segundo{
+    border: 0.1px solid rgb(216, 216, 216);
+    box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
+}
+
+@media (max-width: 992px) {
+    .container{
+        display: block !important;
+    }
+    .primero, .segundo{
+        margin-bottom: 10px;
+        margin-left: 5px !important; 
+        margin-right: 5px !important; 
+    }
+    .titulo{
+        margin: 10px 3px !important;
+    }
+}
+
+@media (max-width: 340px) {
+    .primero .head{
+        font-size: 14px !important;
+    }
+}

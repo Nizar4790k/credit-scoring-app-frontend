@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 usuario: string;
+token: boolean;
+
   constructor() { 
     this.usuario = sessionStorage['usuario'];
+    this.token = sessionStorage['token'] == null && sessionStorage['auth'] == null ? true : false
   }
 
   ngOnInit(): void {

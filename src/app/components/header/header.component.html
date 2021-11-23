@@ -9,7 +9,7 @@
           <li class="nav-item d-flex">
             <a class="nav-link align-self-center lead text-dark me-3 fw-bold" [routerLink]="['inicio']" routerLinkActive="router-link-active" >Cliente</a>
           </li>
-          <li class="nav-item d-flex">
+          <li class="nav-item d-flex" *ngIf="token">
             <a class="nav-link align-self-center lead text-dark me-3 fw-bold" [routerLink]="['reporte']" routerLinkActive="router-link-active" >Reporte</a>
           </li>
           <li class="nav-item d-flex">

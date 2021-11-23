@@ -1,1 +1,32 @@
-<p>siguiente-credito works!</p>
+<section class="credit-actual">
+    <div class="container d-flex my-4" *ngIf="true">
+        <div class="col-lg-6">
+            <div class="primero border rounded-1 mx-2">
+                <h6 class="titulo lead fw-bold text-secondary text-center fs-6 mt-2 mx-3">Cantidad que se le podría prestar</h6>
+                <hr class="mx-5 mt-1">
+                <div class="my-5 mx-3 text-center">
+                    <i class="far fa-money-bill-wave fa-2x mb-2"></i>
+                    <p class="head lead fs-5">{{cantidad | currency:'DOP':'RD$'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="segundo border rounded-1 mx-2">
+                <h6 class="titulo lead fw-bold text-secondary text-center fs-6 mt-2 mx-1">Servicios posibles</h6>
+                <hr class="mx-5 mt-1">
+                <div class="my-5">
+                    <div class="mt-1 mx-3 text-center"> <!-- se repetira varias veces-->
+                        <p class="head lead fs-5"><i class="fad fa-{{servicio}}"></i> {{servicio}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="NotFound" *ngIf="false">
+        <div class="row text-center m-5">
+            <i class="fad fa-surprise fa-4x mb-3"></i>
+            <h1 class="lead text-primary">No es posible calcular un posible credito.</h1>
+            <p class="fs-6">Este cliente no posee una cuenta o registro en el banco.</p>
+        </div>
+    </div>
+</section>

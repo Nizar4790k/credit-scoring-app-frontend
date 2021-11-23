@@ -25,6 +25,8 @@ export class ClienteService {
     const datos = this.http.get(this.hostUrl + this.datosClienteUrl + '/' + codigo);
     datos.subscribe(data => {
       this.datos = data;
+    }, error => {
+      //location.href = '/notFound'
     })
     const cliente = this.http.get(this.hostUrl + this.InfoClientesUrl + '/' + codigo);
     cliente.subscribe((data: any) => {
@@ -35,6 +37,8 @@ export class ClienteService {
       this.clienteNombre.emit(nombre + segundoNombre + apellidos);
       this.cliente = data;  
     })
+
+    //Si no se encontró el cliente, redirigelo a notFound
   }
 
   getDatosCliente(): any {
