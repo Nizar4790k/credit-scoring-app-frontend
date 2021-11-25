@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DetalleComponent } from './components/detalle/detalle.component';
 import { BtnScrollTopComponent } from './components/btn-scroll-top/btn-scroll-top.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HeaderComponent,
     DetalleComponent,
     BtnScrollTopComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +33,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
-
+    ToastrModule.forRoot(),
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

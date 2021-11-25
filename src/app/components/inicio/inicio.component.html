@@ -10,7 +10,7 @@
           <div class="card bg-light">
             <div *ngIf="spinner" class="spinner-border" role="status">
               <span class="sr-only">Loading...</span>
-          </div>
+            </div>
             <div class="card-body">
               <form [formGroup]="clienteForm" (ngSubmit)="buscarCliente()">
                 <i [style.color]="entradaAlerta()" class="fas fa-user-circle fa-2x text-primary"></i>

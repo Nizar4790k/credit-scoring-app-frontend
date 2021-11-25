@@ -1,0 +1,88 @@
+<section class="reporte py-6">
+    <div class="row g-0 h-100">
+        <div class="content mx-auto align-self-center mt-4 mb-1">
+            <div class="info border mb-3">
+                <div class="d-flex my-3">
+                    <h2 class="titulo text-secondary lead align-self-center">Reporte general</h2>
+                    <button class="descargar btn btn-secondary" (click)="downloadPDF()">Descargar</button>
+                    <div *ngIf="spinner" class="spinner-border text-secondary align-self-center" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div id="cuerpo">
+                <section class="cantidad border pt-3">
+                    <h1 class="text-center lead ">Cantidad de clientes por mes</h1>
+                    <ngx-charts-bar-vertical class="align-self-center"
+                        [view]="view"
+                        [results]="valorPrimero.single"
+                        [gradient]="false"
+                        [xAxis]="true"
+                        [yAxis]="true"
+                        [legend]="true"
+                        [showXAxisLabel]="true"
+                        [showYAxisLabel]="true"
+                        [xAxisLabel]="'Mes'"
+                        [yAxisLabel]="'Clientes'">
+                    </ngx-charts-bar-vertical>
+                </section>
+                <section class="promedio border pt-3">
+                    <h1 class="text-center lead ">Score promedio por mes</h1>
+                    <ngx-charts-bar-vertical class="align-self-center"
+                        [view]="view"
+                        [results]="valorSecundario.single"
+                        [gradient]="false"
+                        [xAxis]="true"
+                        [yAxis]="true"
+                        [legend]="true"
+                        [showXAxisLabel]="true"
+                        [showYAxisLabel]="true"
+                        [xAxisLabel]="'Mes'"
+                        [yAxisLabel]="'Score'">
+                    </ngx-charts-bar-vertical>
+                </section>
+                <section class="nivel border pt-3">
+                    <h1 class="text-center lead">Cantidad de clientes por nivel</h1>
+                        <div class="pastel">
+                            <ngx-charts-advanced-pie-chart
+                            [view]="view"
+                            [results]="valorTerciario.single"
+                            [gradient]="false"
+                            [scheme]="valorTerciario.color"
+                            >
+                        </ngx-charts-advanced-pie-chart>
+                    </div>
+                </section>
+                <section class="top border">
+                    <h1 class="text-center lead mt-3 mb-5">Mejores clientes</h1>
+                    <div class="tabla">
+                        <table class="table w-75">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Anthony Delanoy Peralta Pérez</td>
+                                    <td>890</td>
+                                </tr>
+                                <tr>
+                                    <td>Nizar Sanchez</td>
+                                    <td>867</td>
+                                </tr>
+                                <tr>
+                                    <td>Jhan Carlos Escalantes</td>
+                                    <td>850</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <btn-scroll-top></btn-scroll-top>
+</section>
+
