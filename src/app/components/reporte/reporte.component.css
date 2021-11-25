@@ -33,11 +33,6 @@
     margin: 0 auto;
 }
 
-.spinner-border{
-    position: absolute;
-    right: 350px;
-}
-
 @media (max-width: 992px) {
     .content section{
         display: block;
@@ -45,9 +40,5 @@
     }
     .reporte{
         padding-top: 1rem !important;
-    }
-    .spinner-border{
-        position: absolute;
-        right: 180px;
     }
 }

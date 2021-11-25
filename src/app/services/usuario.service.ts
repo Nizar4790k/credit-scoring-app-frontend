@@ -7,7 +7,7 @@ import { Iusuario } from '../interfaces/iusuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-hostUrl = "http://4607-34-73-223-253.ngrok.io";
+hostUrl = "http://3347-34-125-136-201.ngrok.io";
 UsuarioUrl = "/users";
 VerificarUsuarioUrl = "/users/verificar";
   

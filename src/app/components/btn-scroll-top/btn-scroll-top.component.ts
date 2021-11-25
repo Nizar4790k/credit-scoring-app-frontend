@@ -8,25 +8,24 @@ import { DOCUMENT } from '@angular/common';
 })
 export class BtnScrollTopComponent implements OnInit {
     windowScrolled: boolean = false;
-    constructor(@Inject(DOCUMENT) private document: Document) {}
+    constructor() {}
 
-    @HostListener("window:scroll", [])
-    onWindowScroll() {
-        if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
-            this.windowScrolled = true;
-        } 
-       else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
-            this.windowScrolled = false;
-        }
+    @HostListener("window:scroll", []) onWindowScroll() {
+      this.scrollFunction();
     }
-    scrollToTop() {
-      (function smoothscroll() {
-        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        if (currentScroll > 0) {
-          window.requestAnimationFrame(smoothscroll);
-          window.scrollTo(0, currentScroll - (currentScroll / 1));
-        }
-      })();
-    }
+    // When the user scrolls down 20px from the top of the document, show the button
+  scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        this.windowScrolled = true;
+      } else {
+        this.windowScrolled = false;
+      }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  } 
     ngOnInit() {}
 }
