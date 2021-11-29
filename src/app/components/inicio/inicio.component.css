@@ -14,8 +14,13 @@
   margin-top: 0.7rem;
   width: 10rem;
 }
+.cliente{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
 
-.spinner-border{
+.empleado{
   position: absolute;
   right: 80px;
   top: 16px;

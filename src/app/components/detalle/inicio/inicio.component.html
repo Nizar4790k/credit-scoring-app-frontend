@@ -6,19 +6,19 @@
                 <hr class="mx-5 mt-1">
                 <div class="mt-1 mx-3">
                     <p class="head"><i class="fad fa-exclamation-circle"></i> Estado</p>
-                    <p class="text">texto</p>
-                    <p class="head"><i class="fad fa-address-book"></i> Tipo</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteFormat.estado}}</p>
+                    <p class="head"><i class="fad fa-address-book"></i> Tipo de entidad</p>
+                    <p class="text">{{clienteFormat.tipo}}</p>
                     <p class="head"><i class="fad fa-user-edit"></i> Nombre completo</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteFormat.nombre}}</p>
                     <p class="head"><i class="fad fa-venus-mars"></i> Sexo</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteFormat.sexo}}</p>
                     <p class="head"><i class="fad fa-calendar-day"></i> Edad</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{edad}} años</p>
                     <p class="head"><i class="fad fa-rings-wedding"></i> Estado civil</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteFormat.estadoCivil}}</p>
                     <p class="head"><i class="fad fa-globe-americas"></i> Nacionalidad</p>
-                    <p class="text"><i></i> texto</p>
+                    <p class="text">{{clienteInfo.Nationality}}</p>
                 </div>
             </div>
         </div>
@@ -28,15 +28,15 @@
                 <hr class="mx-5 mt-1">
                 <div class="mt-1 mx-3">
                     <p class="head"><i class="fad fa-building"></i> Empresa</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteInfo.WorkDetails[0].CompanyName}}</p>
                     <p class="head"><i class="fad fa-diploma"></i> Profesión</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteInfo.WorkDetails[0].ProfessionName}}</p>
                     <p class="head"><i class="fad fa-user-tie"></i> Posición</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteInfo.WorkDetails[0].JobTitle}}</p>
                 </div>
                 <div class="mt-4 mx-3">
                     <p class="head"><i class="fad fa-id-card"></i> Identificación</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteInfo.Documents[0].DocumentValue}}</p>
                 </div>
             </div>
         </div>
@@ -46,17 +46,22 @@
                 <hr class="mx-5 mt-1">
                 <div class="mt-1 mx-3">
                     <p class="head"><i class="fad fa-phone"></i> Telefono</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteInfo.Contacts[0].PhoneCountryCode}}
+                        {{clienteInfo.Contacts[0].PhoneNumber}}
+                    </p>
                     <p class="head"><i class="fad fa-envelope-open-text"></i> Correo</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{clienteInfo.Contacts[0].EmailAddress}}</p>
                 </div>
                 <div class="mt-4 mx-3">
                     <p class="head"><i  class="fad fa-home"></i> Dirección</p>
-                    <p class="text mb-0">Calle + numero de casa</p>
-                    <p class="text mb-0">Codigo Postal</p>
-                    <p class="text mb-0">Ciudad</p>
-                    <p class="text mb-0">Region</p>
-                    <p class="text">Pais</p>
+                    <p class="text mb-0">{{clienteInfo.Address[0].StreetName}}
+                        {{clienteInfo.Address[0].BuildingNumber}}
+                        {{clienteInfo.Address[0].Department}}
+                    </p>
+                    <p class="text mb-0">{{clienteInfo.Address[0].PostCode}}</p>
+                    <p class="text mb-0">{{clienteInfo.Address[0].TownName}}</p>
+                    <p class="text mb-0">{{clienteInfo.Address[0].CountrySubDivision}}</p>
+                    <p class="text">{{clienteInfo.Address[0].Country}}</p>
                 </div>
             </div>
         </div>

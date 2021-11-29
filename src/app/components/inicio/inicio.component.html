@@ -1,14 +1,14 @@
 <section class="py-6 inicio">
     <div class="row g-0 h-100">
       <div class="col-lg-12 d-flex">
-        <div class="content mx-auto align-self-center px-4 my-5">
+        <div *ngIf="actor" class="content mx-auto align-self-center px-4 my-5">
           <div class="titulo bg-light">
             <div class="buttons align-self-center my-1 mt-2">
                 <h3 class="text-primary lead fw-bold">Calcular score</h3>
             </div>
           </div>
           <div class="card bg-light">
-            <div *ngIf="spinner" class="spinner-border" role="status">
+            <div *ngIf="spinner" class="spinner-border empleado" role="status">
               <span class="sr-only">Loading...</span>
             </div>
             <div class="card-body">
@@ -26,6 +26,17 @@
               </form>
             </div>
           </div>
+        </div>
+      </div>
+      <div *ngIf="!actor" class="content mx-auto align-self-center px-4 my-5">
+        <div class="card d-block p-5">
+            <h3 class="text-primary lead fw-bold">
+              Bienvenido a la aplicacion para calcular su score de Banco Fihogar, CredScoringApp.
+            </h3>
+            <button (click)="buscarCliente()" class="btn btn-primary mt-4">Detalles</button>
+            <div *ngIf="spinner" class="spinner-border cliente text-primary mt-3 mb-0" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
         </div>
       </div>
     </div>

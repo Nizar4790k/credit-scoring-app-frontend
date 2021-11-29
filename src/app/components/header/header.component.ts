@@ -11,7 +11,7 @@ token: boolean;
 
   constructor() { 
     this.usuario = sessionStorage['usuario'];
-    this.token = sessionStorage['token'] == null && sessionStorage['auth'] == null ? true : false
+    this.token = sessionStorage['access_token'] == null && sessionStorage['auth_token'] == null ? true : false
   }
 
   ngOnInit(): void {
@@ -19,7 +19,6 @@ token: boolean;
   }
 
   cerrarSesion(){
-    sessionStorage.removeItem('usuario');
     sessionStorage.clear();
     location.href = "/login";
   }

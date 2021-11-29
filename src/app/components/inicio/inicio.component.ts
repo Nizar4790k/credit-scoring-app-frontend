@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Iacceso } from 'src/app/interfaces/iacceso';
 import { ClienteService } from 'src/app/services/cliente.service';
+import * as moment from 'moment';
 
  @Component({
   selector: 'app-inicio',
@@ -10,14 +12,18 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  clienteForm: FormGroup;
+  clienteForm!: FormGroup;
   spinner = false;
-
+  actor = true;
   constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService, 
     private toastr: ToastrService) {
-      this.clienteForm = this.fb.group({
-        usercode: ["", [Validators.required, Validators.minLength(5)]]
-      })
+      if(sessionStorage['auth_token'] == null && sessionStorage['access_token'] == null){
+        this.clienteForm = this.fb.group({
+          usercode: ["", [Validators.required, Validators.minLength(5)]]
+        })
+      }
+      else
+        this.actor = false;
     }
 
   ngOnInit(): void {
@@ -27,9 +33,31 @@ export class InicioComponent implements OnInit {
 
   buscarCliente(){
     this.spinner = true;
-    const cliente = this.clienteForm.get('usercode')?.value;
+    let acceso: Iacceso;
 
-    this.router.navigateByUrl('/detalle/' + cliente)
+    if(this.actor){
+      acceso = {
+        profileId: this.clienteForm.get('usercode')?.value,
+        auth_token: "",
+        access_token: ""
+      };
+    }
+    else{
+      acceso = {
+        profileId: sessionStorage.getItem('clienteCodigo') || " ",
+        auth_token: sessionStorage.getItem('auth_token') || " ",
+        access_token: sessionStorage.getItem('access_token') || " "
+      };
+      console.log(acceso)
+    }
+    this.clienteServices.setAccess(acceso);
+    this.clienteServices.acceso.subscribe(data => {
+      if(data){
+        sessionStorage.setItem("clienteNombre", " ");
+        sessionStorage.setItem('cliente', " ");
+        this.router.navigateByUrl('/detalle')
+      }
+    })
   }
   
   entradaAlerta(): string{

@@ -1,4 +1,4 @@
 export interface Iusuario {
-    user?: string;
-    pass?: string;
+    username?: string;
+    password?: string;
 }

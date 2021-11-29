@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Iacceso } from 'src/app/interfaces/iacceso';
 import { Iusuario } from 'src/app/interfaces/iusuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { UsuarioService } from 'src/app/services/empleado.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   boton = false;
   
     constructor(private fb: FormBuilder, private toastr: ToastrService,
-      private usuarioServices: UsuarioService, private router: Router) { 
+      private usuarioServices: UsuarioService, private clienteService: ClienteService, private router: Router) { 
       this.cargarForm();
     }
 
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/inicio')
   }
 
-  buscarExisteUsuario(){
+  async buscarExisteUsuario(){
     this.spinner = true;
 
     if(this.usuarioForm.invalid){
@@ -35,28 +37,62 @@ export class LoginComponent implements OnInit {
     }
 
     const usuario: Iusuario = {
-      user: this.usuarioForm.get('user')?.value,
-      pass: this.usuarioForm.get('pass')?.value
+      username: this.usuarioForm.get('user')?.value,
+      password: this.usuarioForm.get('pass')?.value
     };
 
     if(this.boton){
-      this.usuarioServices.getExisteUsuario(usuario).subscribe(data => {
-        if(data == 'true'){
+      await this.usuarioServices.getExisteUsuario(usuario).subscribe(data => {
+        console.log(data.status);
+        if(data.status == 200){
           sessionStorage.setItem('usuario', this.usuarioForm.get('user')?.value);
           location.href = "/inicio";
+        }                  
+      }, error => {
+        if(error.status = 404){
+          this.toastr.error("No se encontró este usuario.", "Inicio de sesion")
         }
         else
-          this.toastr.error("No se encontró este usuario.", "Inicio de sesion")
-        
-      }, error => {
-        this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor");      
+          this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor");
+
+        this.spinner = false;      
       });
     }
     else{
-      
+      await this.clienteService.getExisteCliente(usuario).subscribe(data => {
+
+        if(data.status == 200){
+          sessionStorage.setItem('usuario', this.usuarioForm.get('user')?.value);
+          sessionStorage.setItem('auth_token', data.body.auth_token)
+          sessionStorage.setItem('access_token', data.body.access_token)
+          sessionStorage.setItem('fechaLogin', new Date().toString())
+          sessionStorage.setItem('clienteCodigo', data.body.codigoCliente)
+
+          const acceso: Iacceso = {
+            profileId: data.body.codigoCliente,
+            auth_token: data.body.auth_token,
+            access_token: data.body.access_token
+          };
+
+          this.clienteService.setAccess(acceso);
+          this.clienteService.acceso.subscribe(data => {
+            if(data){
+              sessionStorage.setItem("clienteNombre", " ");
+              sessionStorage.setItem('cliente', " ");
+              location.href = "/inicio";
+            }
+          })
+        }                  
+      }, error => {
+        if(error.status = 404){
+          this.toastr.error("No se encontró este usuario.", "Inicio de sesion")
+        }
+        else
+          this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor");
+
+        this.spinner = false;      
+      });
     }
-    
-    this.spinner = false;
   }
 
   estiloInput(inputName: string): string{

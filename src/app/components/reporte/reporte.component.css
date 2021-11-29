@@ -1,7 +1,7 @@
 .info{
     border: 0.1px solid rgb(216, 216, 216);
     box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
-    background-color: #ffffff98;
+    background-color: #ffffffb2;
     border-radius: 4px;
 }
 .content{
@@ -15,7 +15,7 @@
 .content section{
     border: 0.1px solid rgb(216, 216, 216);
     box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
-    background-color: #ffffff98;
+    background-color: #ffffffb2;
     border-radius: 4px;
     height: 460px;
     margin-bottom: 2rem;

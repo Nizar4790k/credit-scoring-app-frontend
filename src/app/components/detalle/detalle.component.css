@@ -4,7 +4,6 @@
     font-weight: 400;
     font-size: 15px;
     height: 600px;
-    background-color: #fff;
 }
 
 #sidebar-container{
@@ -34,7 +33,7 @@ a:hover, a:hover i{
 }
 
 .navbar{
-    border: 0.1px solid rgb(216, 216, 216);
+    border-color: rgb(245, 169, 226) !important;
     border-radius: 5px;
     box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
     background-color: rgb(243, 96, 206);

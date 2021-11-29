@@ -1,16 +1,16 @@
 <section class="credit-actual">
-    <div class="container d-flex my-4" *ngIf="true">
+    <div class="container d-flex my-4" *ngIf="currentCredit.loans.loansQuantity > 0">
         <div class="col-lg-4">
             <div class="primero border rounded-1 mx-2">
                 <h6 class="titulo lead fw-bold text-secondary text-center fs-6 mt-2 mx-1">Prestamos</h6>
                 <hr class="mx-5 mt-1">
                 <div class="mt-1 mx-3">
                     <p class="head"><i class="fad fa-abacus"></i> Cantidad</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{currentCredit.loans.loansQuantity}}</p>
                     <p class="head"><i class="fad fa-calendar-check"></i> Completados</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{currentCredit.loans.loanStatusCount.completed}}</p>
                     <p class="head"><i class="fad fa-clock"></i> En curso</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{currentCredit.loans.loanStatusCount.inProgress}}</p>
                 </div>
             </div>
         </div>
@@ -20,11 +20,11 @@
                 <hr class="mx-5 mt-1">
                 <div class="mt-1 mx-3">
                     <p class="head"><i class="fad fa-abacus"></i> Cantidad</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{currentCredit.payments.goodPayments + currentCredit.payments.badPayments}}</p>
                     <p class="head"><i class="fad fa-check-circle"></i> Correctos</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{currentCredit.payments.goodPayments}}</p>
                     <p class="head"><i class="fad fa-times-circle"></i> Incorrectos</p>
-                    <p class="text">texto</p>
+                    <p class="text">{{currentCredit.payments.badPayments}}</p>
                 </div>
             </div>
         </div>
@@ -32,22 +32,25 @@
             <div class="tercero border rounded-1 mx-2">
                 <h6 class="titulo lead fw-bold text-secondary text-center fs-6 mt-2 mx-1">Prestamos actuales</h6>
                 <hr class="mx-5 mt-1">
-                <div class="actual mt-1 mb-2 mx-3"> <!-- Se repetira varias veces. -->
-                    <p class="head"><i class="fad fa-money-check-alt"></i> Monto</p>
-                    <p class="text">texto</p>
-                    <p class="head"><i class="fad fa-abacus"></i> Pagos a realizar</p>
-                    <p class="text">texto</p>
-                    <p class="head"><i class="fad fa-calendar-check"></i> Pagos realizados</p>
-                    <p class="text">texto</p>
-                    <p class="head"><i class="fad fa-check-circle"></i> Pagos correctos</p>
-                    <p class="text">texto</p>
-                    <p class="head"><i class="fad fa-times-circle"></i> Pagos incorrectos</p>
-                    <p class="text">texto</p>
+                <div *ngIf="currentCredit.loans.loanStatusCount.inProgress > 0" class="actual mt-1 mb-2 mx-3"> 
+                    <p class="head"><i class="fad fa-money-check-alt"></i> Monto total prestamos</p>
+                    <p class="text">{{currentCredit.currentLoans.totalAmount}}</p>
+                    <p class="head"><i class="fad fa-abacus"></i> Total pagos a realizar</p>
+                    <p class="text">{{currentCredit.currentLoans.totalPayments}}</p>
+                    <p class="head"><i class="fad fa-calendar-check"></i> Total pagos realizados</p>
+                    <p class="text">{{currentCredit.currentLoans.payments.goodPayments + currentCredit.currentLoans.payments.badPayments}}</p>
+                    <p class="head"><i class="fad fa-check-circle"></i> Total pagos correctos</p>
+                    <p class="text">{{currentCredit.currentLoans.payments.goodPayments}}</p>
+                    <p class="head"><i class="fad fa-times-circle"></i> Total pagos incorrectos</p>
+                    <p class="text">{{currentCredit.currentLoans.payments.badPayments}}</p>
+                </div>
+                <div *ngIf="currentCredit.loans.loanStatusCount.inProgress == 0" class="actual mt-1 mb-2 mx-3">
+                    <h1 class="lead text-secondary text-center fs-5">No se encontró prestamos en progreso.</h1>
                 </div>
             </div>
         </div>
     </div>
-    <div class="NotFound" *ngIf="false">
+    <div class="NotFound" *ngIf="currentCredit.loans.loansQuantity == 0">
         <div class="row text-center m-5">
             <i class="fad fa-surprise fa-4x mb-3"></i>
             <h1 class="lead text-primary">No se encontró prestamos a nombre de este cliente.</h1>
