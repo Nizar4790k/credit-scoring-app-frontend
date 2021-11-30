@@ -22,7 +22,22 @@ export class ReporteComponent implements OnInit {
   valorCuarto: any = [];
 
   constructor(private reporteService: ReporteService) { 
-    
+    this.reporte = {
+      meses: [],
+      cantidadClientes: [],
+      scoresPromedio: [],
+      nivelActual: {
+        buenos: 0,
+        regulares: 0,
+        malos: 0
+      },
+      top3Actual: [
+          {
+            nombre: 0,
+            score: 0
+          }
+      ]
+    }
   }
 
   ngOnInit(): void {
