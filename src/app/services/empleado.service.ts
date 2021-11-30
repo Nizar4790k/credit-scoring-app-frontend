@@ -8,13 +8,12 @@ import { Iusuario } from '../interfaces/iusuario';
 })
 export class UsuarioService {
 hostUrl = "http://localhost:3001";
-UsuarioUrl = "/users";
-VerificarUsuarioUrl = "/empleado_login";
+verificarEmpleadoUrl = "/empleado_login";
   
   constructor(private http: HttpClient) { }
 
   getExisteUsuario(usuario: Iusuario): Observable<any>{
 
-    return this.http.post(this.hostUrl + this.VerificarUsuarioUrl, usuario, {observe: 'response'})
+    return this.http.post(this.hostUrl + this.verificarEmpleadoUrl, usuario, {observe: 'response'})
   }
 }

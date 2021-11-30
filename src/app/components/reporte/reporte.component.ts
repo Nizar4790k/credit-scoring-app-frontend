@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ScaleType } from '@swimlane/ngx-charts';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas'; 
+import { ReporteService } from 'src/app/services/reporte.service';
  
 
 @Component({
@@ -10,6 +11,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./reporte.component.css']
 })
 export class ReporteComponent implements OnInit {
+  reporte: any;
   spinner = false;
 
   view: [number, number] = [700, 400]
@@ -19,78 +21,66 @@ export class ReporteComponent implements OnInit {
   valorTerciario: any = [];
   valorCuarto: any = [];
 
-  constructor() { 
-    this.cantidadClientes();
-    this.scorePromedio();
-    this.clientesNivel();
-    this.topClientes();
+  constructor(private reporteService: ReporteService) { 
+    
   }
 
   ngOnInit(): void {
-    
+    if(sessionStorage['reporte'] == " "){
+      this.getReporte();
+    }
+    else{
+      this.reporte = JSON.parse(sessionStorage.getItem('reporte') || '{}');
+      sessionStorage.removeItem('reporte');
+    }
+
+    this.cantidadClientes();
+    this.scorePromedio();
+    this.clientesNivel();
+  }
+
+  getReporte(){
+    this.reporte = this.reporteService.setReporte();
   }
 
   cantidadClientes(){
 
-    this.valorPrimero = {
-      single: [
-        {
-          "name": "Enero",
-          "value": 23000
-        },
-        {
-          "name": "Febrero",
-          "value": 25000
-        },
-        {
-          "name": "Marzo",
-          "value": 28000
-        },
-        {
-          "name": "Abril",
-          "value": 40000
-        },
-      ]
-    }
+    let single = [];
+    for(let i=0; i< this.reporte.meses.length; i++)
+      single.push({
+        name: this.reporte.meses[i],
+        value: this.reporte.cantidadClientes[i]
+      })
+
+    this.valorPrimero = {single: single};
   }
 
   scorePromedio(){
-    this.valorSecundario = {
-      single: [
-        {
-          "name": "Enero",
-          "value": 700
-        },
-        {
-          "name": "Febrero",
-          "value": 723
-        },
-        {
-          "name": "Marzo",
-          "value": 640
-        },
-        {
-          "name": "Abril",
-          "value": 805
-        },
-      ]
-    }
+
+    let single = [];
+    for(let i=0; i< this.reporte.meses.length; i++)
+      single.push({
+        name: this.reporte.meses[i],
+        value: this.reporte.scoresPromedio[i]
+      })
+      
+    this.valorSecundario = {single: single};
   }
 
   clientesNivel(){
     this.valorTerciario = {
       single: [
         {
-          "name": "Bueno",
-          "value": 10000
+          "name": "Buenos",
+          "value": this.reporte.nivelActual.buenos
         },
         {
-          "name": "Medio",
-          "value": 5000
+          "name": "Regulares",
+          "value": this.reporte.nivelActual.regulares
         },
         {
-          "name": "Malo",
-          "value": 1000
+          "name": "Malos",
+          "value": this.reporte.nivelActual.malos
         }
       ],
       color: {
@@ -99,26 +89,6 @@ export class ReporteComponent implements OnInit {
         group: ScaleType.Ordinal,  
         domain: ['#5AA454', '#C7B42C', '#A10A28']
       }
-    }
-  }
-
-  topClientes(){
-    this.valorCuarto = {
-      single: [
-        {
-          "name": "Anthony Delanoy Peralta Pérez",
-          "value": 850
-        },
-        {
-          "name": "Nizar Sanchez",
-          "value": 823
-        },
-        {
-          "name": "Jhan Carlos Escalante",
-          "value": 820
-        }
-      ],
-      cardColor: '#232837'
     }
   }
 
@@ -144,10 +114,14 @@ export class ReporteComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`Reporte_${new Date().toISOString()}.pdf`);
+      docResult.save(`Reporte_${new Date().toLocaleString()}.pdf`);
       this.spinner = false;
-    });
-
-    
+    });   
  }
+
+ @HostListener('window:beforeunload', ['$event'])
+    unloadNotification($event: any){
+
+    sessionStorage.setItem('reporte', JSON.stringify(this.reporte));
+  }
 }

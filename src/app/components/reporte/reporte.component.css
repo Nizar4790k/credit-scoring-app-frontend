@@ -12,6 +12,10 @@
     margin: 0 auto;
 }
 
+.textInfo{
+    font-size: 10px;
+}
+
 .content section{
     border: 0.1px solid rgb(216, 216, 216);
     box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
@@ -42,3 +46,10 @@
         padding-top: 1rem !important;
     }
 }
+
+@media (max-width: 705px) {
+    .textInfo{
+        display: block !important;
+    }
+}
+

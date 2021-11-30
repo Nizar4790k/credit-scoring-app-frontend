@@ -10,7 +10,10 @@
             <a class="nav-link align-self-center lead text-dark me-3 fw-bold" [routerLink]="['inicio']" routerLinkActive="router-link-active" >Cliente</a>
           </li>
           <li class="nav-item d-flex" *ngIf="token">
-            <a class="nav-link align-self-center lead text-dark me-3 fw-bold" [routerLink]="['reporte']" routerLinkActive="router-link-active" >Reporte</a>
+            <button (click)="setReporte()" class="reporte nav-link align-self-center lead text-dark me-3 fw-bold">
+              <span *ngIf="spinner" class="spinner-border spinner-border-sm">
+              </span> Reporte
+            </button>
           </li>
           <li class="nav-item d-flex">
             <a class="us nav-link align-self-center lead text-dark me-2 border-start ps-4">{{usuario}}<i class="fas fa-user-circle ms-2 text-primary"></i></a>

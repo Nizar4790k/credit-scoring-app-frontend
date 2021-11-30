@@ -29,6 +29,20 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     if(sessionStorage['usuario'] == null)
       this.router.navigateByUrl('/login')
+    
+    this.verificarTimepoAcceso();
+  }
+
+  verificarTimepoAcceso(){
+    if(sessionStorage['access_token'] != null && sessionStorage['auth_token'] != null){
+      let fecha1 = moment(sessionStorage['fechaLogin']);
+      let fecha2 = moment(new Date());
+      
+      if(fecha2.diff(fecha1, 'minutes') >= 20){
+        sessionStorage.clear();
+        location.href = "/login";
+      }
+    }
   }
 
   buscarCliente(){
@@ -48,7 +62,6 @@ export class InicioComponent implements OnInit {
         auth_token: sessionStorage.getItem('auth_token') || " ",
         access_token: sessionStorage.getItem('access_token') || " "
       };
-      console.log(acceso)
     }
     this.clienteServices.setAccess(acceso);
     this.clienteServices.acceso.subscribe(data => {

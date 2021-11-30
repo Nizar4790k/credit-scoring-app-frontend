@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
@@ -15,22 +14,7 @@ export class SiguienteCreditoComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.verificarTimepoAcceso();
     this.getNextCredit();
-  }
-
-  verificarTimepoAcceso(){
-    if(sessionStorage['acces_token'] != null && sessionStorage['auth_token'] != null){
-      let fecha1 = moment(sessionStorage['fechaLogin']);
-      let fecha2 = moment(new Date());
-      
-      if(fecha2.diff(fecha1, 'minutes') >= 20){
-        sessionStorage.removeItem('usuario');
-        sessionStorage.removeItem('auth_token')
-        sessionStorage.removeItem('access_token')
-        sessionStorage.removeItem('fechaLogin')
-      }
-    }
   }
 
   getNextCredit(){

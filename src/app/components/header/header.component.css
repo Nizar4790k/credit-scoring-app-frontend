@@ -1,3 +1,11 @@
+.reporte{
+    background-color: transparent;
+    border: none;
+}
+.spinner-border{
+    margin-bottom: 2px; 
+}
+
 @media (max-width: 992px) {
     .us{
         border: none !important;

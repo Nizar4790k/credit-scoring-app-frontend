@@ -57,22 +57,7 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.verificarTimepoAcceso();
     this.getPerfil();
-  }
-
-  verificarTimepoAcceso(){
-    if(sessionStorage['acces_token'] != null && sessionStorage['auth_token'] != null){
-      let fecha1 = moment(sessionStorage['fechaLogin']);
-      let fecha2 = moment(new Date());
-      
-      if(fecha2.diff(fecha1, 'minutes') >= 20){
-        sessionStorage.removeItem('usuario');
-        sessionStorage.removeItem('auth_token')
-        sessionStorage.removeItem('access_token')
-        sessionStorage.removeItem('fechaLogin')
-      }
-    }
   }
 
   getPerfil(){
@@ -126,7 +111,7 @@ export class InicioComponent implements OnInit {
       estado: estado(),
       sexo: sexo(),
       estadoCivil: estadoCivil(),
-      tipo: this.clienteInfo.LegalEntityType == "Personal" ? "Personal" : "De negocios",
+      tipo: this.clienteInfo.LegalEntityType == "Person" ? "Personal" : "De negocios",
       nombre: nombreCompleto()
     }
 

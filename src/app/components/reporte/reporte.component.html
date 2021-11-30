@@ -9,6 +9,10 @@
                     </div>
                     <button class="descargar btn btn-secondary" (click)="downloadPDF()">Descargar</button>
                 </div>
+                <h5 class="textInfo text-center text-secondary mx-5 mt-0 d-none">
+                    *Si esta navegando en este apartado desde un aparato de pequeñas dimensiones,
+                     gire su pantalla para mejor apreciación y poder descargar el reporte en mejor calidad.
+                </h5>
             </div>
             <div id="cuerpo">
                 <section class="cantidad border pt-3">
@@ -22,7 +26,7 @@
                         [legend]="true"
                         [showXAxisLabel]="true"
                         [showYAxisLabel]="true"
-                        [xAxisLabel]="'Mes'"
+                        [xAxisLabel]="'Meses'"
                         [yAxisLabel]="'Clientes'">
                     </ngx-charts-bar-vertical>
                 </section>
@@ -37,7 +41,7 @@
                         [legend]="true"
                         [showXAxisLabel]="true"
                         [showYAxisLabel]="true"
-                        [xAxisLabel]="'Mes'"
+                        [xAxisLabel]="'Meses'"
                         [yAxisLabel]="'Score'">
                     </ngx-charts-bar-vertical>
                 </section>
@@ -56,7 +60,7 @@
                 <section class="top border">
                     <h1 class="text-center lead mt-3 mb-5">Mejores clientes</h1>
                     <div class="tabla">
-                        <table class="table w-75">
+                        <table class="table w-75 border border-secondary">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Nombre</th>
@@ -64,17 +68,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Anthony Delanoy Peralta Pérez</td>
-                                    <td>890</td>
-                                </tr>
-                                <tr>
-                                    <td>Nizar Sanchez</td>
-                                    <td>867</td>
-                                </tr>
-                                <tr>
-                                    <td>Jhan Carlos Escalantes</td>
-                                    <td>850</td>
+                                <tr *ngFor="let cliente of reporte.top3Actual">
+                                    <td>{{cliente.nombre}}</td>
+                                    <td>{{cliente.score | number : '1.2-2'}}</td>
                                 </tr>
                             </tbody>
                           </table>

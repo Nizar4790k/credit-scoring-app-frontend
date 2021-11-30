@@ -8,7 +8,7 @@
 
 #sidebar-container{
     box-shadow: 0 2px 8px 0 rgb(153 153 153 / 44%);
-    min-height: 50vh;
+    min-height: 40vh;
     background-color: rgb(173, 56, 138);
     border-radius: 5px;
 }

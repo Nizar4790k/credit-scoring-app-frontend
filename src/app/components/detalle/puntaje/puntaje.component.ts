@@ -22,23 +22,8 @@ export class PuntajeComponent implements OnInit {
     }
    }
 
-  ngOnInit(): void {    
-    this.verificarTimepoAcceso();                       
+  ngOnInit(): void {                      
     this.getScore();   
-  }
-
-  verificarTimepoAcceso(){
-    if(sessionStorage['acces_token'] != null && sessionStorage['auth_token'] != null){
-      let fecha1 = moment(sessionStorage['fechaLogin']);
-      let fecha2 = moment(new Date());
-      
-      if(fecha2.diff(fecha1, 'minutes') >= 20){
-        sessionStorage.removeItem('usuario');
-        sessionStorage.removeItem('auth_token')
-        sessionStorage.removeItem('access_token')
-        sessionStorage.removeItem('fechaLogin')
-      }
-    }
   }
 
   getScore(){

@@ -8,26 +8,26 @@ export interface Iperfil {
     MaritalStatus?: string;
     LegalEntityType?: string;
     Nationality?: string;
-    WorkDetails: [
+    WorkDetails?: [
         {
             CompanyName?: string;
             ProfessionName?: string;
             JobTitle?: string;
         }
-    ],
-    Documents: [
+    ];
+    Documents?: [
         {
             DocumentValue?: string;
         }
-    ],
-    Contacts: [
+    ];
+    Contacts?: [
         {
             PhoneCountryCode?: string;
             PhoneNumber?: string;
             EmailAddress?: string;
         }
-    ],
-    Address: [
+    ];
+    Address?: [
         {
             Department?: string;
             StreetName?: string;
@@ -38,5 +38,5 @@ export interface Iperfil {
             Country?: string;
             
         }
-    ]
+    ];
 }

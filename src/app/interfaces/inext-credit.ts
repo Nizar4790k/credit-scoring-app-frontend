@@ -1,3 +1,3 @@
 export interface InextCredit {
-    nextCredit: number
+    nextCredit?: number;
 }
