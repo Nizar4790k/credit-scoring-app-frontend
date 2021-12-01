@@ -8,7 +8,7 @@ import { InextCredit } from '../interfaces/inext-credit';
 import { Iperfil } from '../interfaces/iperfil';
 import { Iscore } from '../interfaces/iscore';
 import { Iusuario } from '../interfaces/iusuario';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +16,7 @@ export class ClienteService {
   acceso = new EventEmitter<boolean>();
   detalle: any;
 
-  hostUrl = "http://localhost:3001";
+  hostUrl = environment.hostUrl;
   clienteLoginUrl = "/cliente_login";
   detalleClienteUrl = "/detalle_cliente";
 
