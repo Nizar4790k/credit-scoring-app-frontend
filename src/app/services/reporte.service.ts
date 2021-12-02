@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Ireporte } from '../interfaces/ireporte';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class ReporteService {
   acceso = new EventEmitter<boolean>();
   reporte: any;
 
-  hostUrl = "http://localhost:3001";
+  hostUrl = environment.hostUrl
   reporteUrl = "/reporte";
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
