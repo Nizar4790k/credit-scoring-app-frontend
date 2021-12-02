@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import * as moment from 'moment';
 
@@ -11,11 +11,13 @@ import * as moment from 'moment';
 export class DetalleComponent implements OnInit {
   clienteNombre: string = "";
 
-  constructor(private clienteService: ClienteService, private rutaActiva: ActivatedRoute,
+  constructor(private clienteService: ClienteService,
     private router: Router) { }
 
   ngOnInit(): void {
-    if(sessionStorage['cliente'] != " "){
+    if(sessionStorage['cliente'] === undefined)
+      this.router.navigateByUrl("/inicio");
+    else if(sessionStorage['cliente'] != " "){
       this.clienteService.setCliente(JSON.parse(sessionStorage.getItem('cliente') || '{}'));
       sessionStorage.removeItem('cliente');
     }
