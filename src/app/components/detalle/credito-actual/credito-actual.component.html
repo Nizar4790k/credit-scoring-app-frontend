@@ -34,7 +34,13 @@
                 <hr class="mx-5 mt-1">
                 <div *ngIf="currentCredit.loans.loanStatusCount.inProgress > 0" class="actual mt-1 mb-2 mx-3"> 
                     <p class="head"><i class="fad fa-money-check-alt"></i> Monto total prestamos</p>
-                    <p class="text">{{currentCredit.currentLoans.totalAmount}}</p>
+                    <p class="text">{{currentCredit.currentLoans.totalAmount | currency:'DOP':'RD$'}}</p>
+                    <p class="head"><i class="fad fa-money-check-alt"></i> Monto total pagado</p>
+                    <p class="text">{{currentCredit.currentLoans.totalCurrentAmount | currency:'DOP':'RD$'}}</p>
+                    <p class="head"><i class="fad fa-money-check-alt"></i> Monto total pendiente por pagar</p>
+                    <p class="text">
+                        {{currentCredit.currentLoans.totalAmount - currentCredit.currentLoans.totalCurrentAmount | currency:'DOP':'RD$'}}
+                    </p>
                     <p class="head"><i class="fad fa-abacus"></i> Total pagos a realizar</p>
                     <p class="text">{{currentCredit.currentLoans.totalPayments}}</p>
                     <p class="head"><i class="fad fa-calendar-check"></i> Total pagos realizados</p>

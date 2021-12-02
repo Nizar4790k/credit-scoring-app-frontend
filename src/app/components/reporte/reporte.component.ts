@@ -25,8 +25,8 @@ export class ReporteComponent implements OnInit {
     this.reporte = {
       meses: [],
       cantidadClientes: [],
-      scoresPromedio: [],
-      nivelActual: {
+      averageScores: [],
+      currentLevel: {
         buenos: 0,
         regulares: 0,
         malos: 0
@@ -76,7 +76,7 @@ export class ReporteComponent implements OnInit {
     for(let i=0; i< this.reporte.meses.length; i++)
       single.push({
         name: this.reporte.meses[i],
-        value: this.reporte.scoresPromedio[i]
+        value: this.reporte.averageScores[i]
       })
       
     this.valorSecundario = {single: single};
@@ -87,15 +87,15 @@ export class ReporteComponent implements OnInit {
       single: [
         {
           "name": "Buenos",
-          "value": this.reporte.nivelActual.buenos
+          "value": this.reporte.currentLevel.buenos
         },
         {
           "name": "Regulares",
-          "value": this.reporte.nivelActual.regulares
+          "value": this.reporte.currentLevel.regulares
         },
         {
           "name": "Malos",
-          "value": this.reporte.nivelActual.malos
+          "value": this.reporte.currentLevel.malos
         }
       ],
       color: {

@@ -12,11 +12,11 @@ export interface IcurrentCredit {
     };
     currentLoans?: {
         totalAmount?: number;
+        totalCurrentAmount?: number;
         totalPayments?: number;
         payments?: {
             goodPayments?: number;
             badPayments?: number;
         };
-        totalMount?: number;
     };
 }

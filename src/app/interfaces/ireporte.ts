@@ -1,8 +1,8 @@
 export interface Ireporte {
     meses?: string[];
     cantidadClientes?: number[];
-    scoresPromedio?: number[];
-    nivelActual?: {
+    averageScores?: number[];
+    currentLevel?: {
         buenos?: number;
         regulares?: number;
         malos?: number;

@@ -24,12 +24,12 @@ export class CreditoActualComponent implements OnInit {
       },
       currentLoans: {
         totalAmount: 0,
+        totalCurrentAmount: 0,
         totalPayments: 0,
         payments: {
           goodPayments: 0,
           badPayments: 0,
         },
-        totalMount: 0,
       }
     }
   }
