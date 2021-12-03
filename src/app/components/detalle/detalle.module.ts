@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DetalleRoutingModule } from './detalle-routing.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
-import * as moment from 'moment';
+
 
 import { PuntajeComponent } from './puntaje/puntaje.component';
 import { SiguienteCreditoComponent } from './siguiente-credito/siguiente-credito.component';
