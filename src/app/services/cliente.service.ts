@@ -29,12 +29,12 @@ export class ClienteService {
   async setAccess(acceso: Iacceso){
 
     await this.http.post(this.hostUrl + this.detalleClienteUrl, acceso, {observe: 'response'}).subscribe(data => {
-      if(data.status == 200){
+      if(data.status === 200){
         this.detalle = data.body;
         this.acceso.emit(true);
       } 
     }, error => {
-      if(error.status == 404){
+      if(error.status === 404){
 
         this.toastr.error("No se encontró este cliente.", "Acesso")
       }

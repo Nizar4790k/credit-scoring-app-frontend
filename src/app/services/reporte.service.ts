@@ -20,7 +20,7 @@ export class ReporteService {
   async getReporte(){
 
     await this.http.get(this.hostUrl + this.reporteUrl, {observe: 'response'}).subscribe(data => {
-      if(data.status == 200){
+      if(data.status === 200){
         this.reporte = data.body;
         this.acceso.emit(true);
       } 
