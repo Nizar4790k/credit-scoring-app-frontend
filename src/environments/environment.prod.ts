@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  hostUrl:process.env.HOST_URL,
+  environmentName:"Production",
 };
