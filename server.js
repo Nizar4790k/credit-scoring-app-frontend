@@ -9,3 +9,6 @@ app.use(express.static(__dirname + '/dist/credit-scoring-app-frontend'));
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/credit-scoring-app-frontend/index.html'));
 });
+
+// default Heroku port
+app.listen(process.env.PORT || 5000);
