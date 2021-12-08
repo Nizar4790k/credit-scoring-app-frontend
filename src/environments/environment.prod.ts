@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  environmentName:"Production",
+  hostUrl:"https://credscoringapp-backend.herokuapp.com"
 };
