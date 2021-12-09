@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Iacceso } from 'src/app/interfaces/iacceso';
 import { ClienteService } from 'src/app/services/cliente.service';
 import * as moment from 'moment';
@@ -15,12 +14,11 @@ export class InicioComponent implements OnInit {
   clienteForm!: FormGroup;
   spinner = false;
   actor = true;
-  constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService, 
-    private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService) {
       if(sessionStorage['auth_token'] == null && sessionStorage['access_token'] == null){
         this.clienteForm = this.fb.group({
           usercode: ["", [Validators.required, Validators.minLength(5)]]
-        })
+        });
       }
       else
         this.actor = false;
@@ -66,8 +64,8 @@ export class InicioComponent implements OnInit {
     this.clienteServices.setAccess(acceso);
     this.clienteServices.acceso.subscribe(data => {
       if(data){
-        sessionStorage.setItem("clienteNombre", " ");
-        sessionStorage.setItem('cliente', " ");
+        sessionStorage.setItem("clienteNombre", "unset");
+        sessionStorage.setItem('cliente', "unset");
         this.router.navigateByUrl('/detalle')
       }
       else{

@@ -3,8 +3,8 @@ import { ScaleType } from '@swimlane/ngx-charts';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas'; 
 import { ReporteService } from 'src/app/services/reporte.service';
+import { Router } from '@angular/router';
  
-
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
@@ -21,7 +21,7 @@ export class ReporteComponent implements OnInit {
   valorTerciario: any = [];
   valorCuarto: any = [];
 
-  constructor(private reporteService: ReporteService) { 
+  constructor(private reporteService: ReporteService, private router: Router) { 
     this.reporte = {
       meses: [],
       cantidadClientes: [],
@@ -38,20 +38,35 @@ export class ReporteComponent implements OnInit {
           }
       ]
     }
+    this.valorTerciario.color = {
+      name: 'own',
+      selectable: false,
+      group: ScaleType.Ordinal,  
+      domain: ['#5AA454', '#C7B42C', '#A10A28']
+    }
   }
 
   ngOnInit(): void {
-    if(sessionStorage['reporte'] == " "){
-      this.getReporte();
+    if(sessionStorage['reporte'] === undefined){
+      this.router.navigateByUrl('/inicio');
     }
-    else{
-      this.reporte = JSON.parse(sessionStorage.getItem('reporte') || '{}');
-      sessionStorage.removeItem('reporte');
+    else {
+      if(sessionStorage['reporte'] == "unset"){
+        this.getReporte();
+      }
+      else{
+        this.reporte = JSON.parse(sessionStorage.getItem('reporte') || '{}');
+        sessionStorage.removeItem('reporte');
+      }
+  
+      this.cantidadClientes();
+      this.scorePromedio();
+      this.clientesNivel();
     }
+  }
 
-    this.cantidadClientes();
-    this.scorePromedio();
-    this.clientesNivel();
+  ngOnDestroy(){
+    sessionStorage.removeItem('reporte');
   }
 
   getReporte(){

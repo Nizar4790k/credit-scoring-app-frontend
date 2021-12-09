@@ -77,8 +77,6 @@ export class LoginComponent implements OnInit {
           this.clienteService.setAccess(acceso);
           this.clienteService.acceso.subscribe(data => {
             if(data){
-              sessionStorage.setItem("clienteNombre", " ");
-              sessionStorage.setItem('cliente', " ");
               location.href = "/inicio";
             }
           })
