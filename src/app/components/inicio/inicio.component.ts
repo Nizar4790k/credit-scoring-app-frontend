@@ -70,8 +70,10 @@ export class InicioComponent implements OnInit {
         sessionStorage.setItem('cliente', " ");
         this.router.navigateByUrl('/detalle')
       }
+      else{
+        this.spinner = false;
+      }
     })
-    this.spinner = false;
   }
   
   entradaAlerta(): string{
