@@ -9,6 +9,7 @@ import { Iperfil } from '../interfaces/iperfil';
 import { Iscore } from '../interfaces/iscore';
 import { Iusuario } from '../interfaces/iusuario';
 import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })

@@ -71,6 +71,7 @@ export class InicioComponent implements OnInit {
         this.router.navigateByUrl('/detalle')
       }
     })
+    this.spinner = false;
   }
   
   entradaAlerta(): string{

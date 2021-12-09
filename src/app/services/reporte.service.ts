@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ireporte } from '../interfaces/ireporte';
 
