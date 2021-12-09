@@ -70,7 +70,9 @@ export class InicioComponent implements OnInit {
         sessionStorage.setItem('cliente', " ");
         this.router.navigateByUrl('/detalle')
       }
-      this.spinner = false;
+      else{
+        this.spinner = false;
+      }
     });
   }
   

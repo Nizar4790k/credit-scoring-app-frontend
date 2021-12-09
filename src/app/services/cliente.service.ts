@@ -37,10 +37,12 @@ export class ClienteService {
     }, error => {
       if(error.status === 404){
 
-        this.toastr.error("No se encontró este cliente.", "Acesso")
+        this.toastr.error("No se encontró este cliente.", "Acesso");
       }
       else
         this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error de acceso");
+    
+      this.acceso.emit(false);
     })
   }
 
