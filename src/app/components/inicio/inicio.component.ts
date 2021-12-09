@@ -46,10 +46,10 @@ export class InicioComponent implements OnInit {
   }
 
   buscarCliente(){
-    this.spinner = true;
     let acceso: Iacceso;
 
     if(this.actor){
+      this.spinner = true;
       acceso = {
         profileId: this.clienteForm.get('usercode')?.value,
         auth_token: "",
@@ -70,7 +70,8 @@ export class InicioComponent implements OnInit {
         sessionStorage.setItem('cliente', " ");
         this.router.navigateByUrl('/detalle')
       }
-    })
+      this.spinner = false;
+    });
   }
   
   entradaAlerta(): string{
