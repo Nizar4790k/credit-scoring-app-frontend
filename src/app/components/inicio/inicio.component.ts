@@ -66,8 +66,8 @@ export class InicioComponent implements OnInit {
     this.clienteServices.setAccess(acceso);
     this.clienteServices.acceso.subscribe(data => {
       if(data){
-        sessionStorage.setItem("clienteNombre", " ");
-        sessionStorage.setItem('cliente', " ");
+        sessionStorage.setItem("clienteNombre", "unset");
+        sessionStorage.setItem('cliente', "unset");
         this.router.navigateByUrl('/detalle')
       }
       else{

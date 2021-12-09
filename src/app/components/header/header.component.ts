@@ -27,7 +27,7 @@ spinner = false;
     this.reporteService.acceso.subscribe(data => {
       if(data){
         this.spinner = false;
-        sessionStorage.setItem('reporte', " ");
+        sessionStorage.setItem('reporte', "unset");
         this.router.navigateByUrl('/reporte')
       }
     })

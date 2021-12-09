@@ -17,7 +17,7 @@ export class DetalleComponent implements OnInit {
   ngOnInit(): void {
     if(sessionStorage['cliente'] === undefined)
       this.router.navigateByUrl("/inicio");
-    else if(sessionStorage['cliente'] != " "){
+    else if(sessionStorage['cliente'] != "unset"){
       this.clienteService.setCliente(JSON.parse(sessionStorage.getItem('cliente') || '{}'));
       sessionStorage.removeItem('cliente');
     }
@@ -39,7 +39,7 @@ export class DetalleComponent implements OnInit {
 
   getClienteNombre(){
 
-    if(sessionStorage['clienteNombre'] == " "){
+    if(sessionStorage['clienteNombre'] == "unset"){
       let nombre = this.clienteService.getClientePerfil().FirstName + " ";
       let segundoNombre = this.clienteService.getClientePerfil().MiddleName == null ?  null 
       : this.clienteService.getClientePerfil().MiddleName + " ";
