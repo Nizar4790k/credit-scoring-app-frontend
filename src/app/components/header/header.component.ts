@@ -30,6 +30,9 @@ spinner = false;
         sessionStorage.setItem('reporte', "unset");
         this.router.navigateByUrl('/reporte')
       }
+      else{
+        this.spinner = false;
+      }
     })
   }
 
