@@ -24,7 +24,9 @@ export class ReporteService {
         this.acceso.emit(true);
       } 
     }, error => {
-      this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor")
+      this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor", {
+        progressBar: true
+      });
       this.acceso.emit(false);
     });
   }

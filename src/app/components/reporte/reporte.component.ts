@@ -4,6 +4,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas'; 
 import { ReporteService } from 'src/app/services/reporte.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
  
 @Component({
   selector: 'app-reporte',
@@ -21,7 +22,8 @@ export class ReporteComponent implements OnInit {
   valorTerciario: any = [];
   valorCuarto: any = [];
 
-  constructor(private reporteService: ReporteService, private router: Router) { 
+  constructor(private reporteService: ReporteService, private router: Router, 
+    private toastr: ToastrService) { 
     this.reporte = {
       meses: [],
       cantidadClientes: [],
@@ -123,30 +125,37 @@ export class ReporteComponent implements OnInit {
   }
 
   downloadPDF() {
-    this.spinner = true;
+    try {
+      this.spinner = true;
 
-    const DATA = document.getElementById('cuerpo') as HTMLCanvasElement;
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(DATA, options).then((canvas) => {
-    
-      const img = canvas.toDataURL('image/PNG');
+      const DATA = document.getElementById('cuerpo') as HTMLCanvasElement;
+      const doc = new jsPDF('p', 'pt', 'a4');
+      const options = {
+        background: 'white',
+        scale: 3
+      };
+      html2canvas(DATA, options).then((canvas) => {
+      
+        const img = canvas.toDataURL('image/PNG');
 
-      // Add image Canvas to PDF
-      const bufferX = 150;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`Reporte_${new Date().toLocaleString()}.pdf`);
-      this.spinner = false;
-    });   
+        // Add image Canvas to PDF
+        const bufferX = 150;
+        const bufferY = 15;
+        const imgProps = (doc as any).getImageProperties(img);
+        const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+        return doc;
+      }).then((docResult) => {
+        docResult.save(`Reporte_${new Date().toLocaleString()}.pdf`);
+        this.spinner = false;
+      });   
+    } catch (error) {
+      this.toastr.error("Hubo un error al intentar de descargar el archivo.", 
+      "Descarga de reporte", {
+        progressBar: true
+      });
+    }
  }
 
  @HostListener('window:beforeunload', ['$event'])
