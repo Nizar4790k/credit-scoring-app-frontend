@@ -15,8 +15,7 @@ export class InicioComponent implements OnInit {
   clienteForm!: FormGroup;
   spinner = false;
   actor = true;
-  constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService, 
-    private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService) {
       if(sessionStorage['auth_token'] == null && sessionStorage['access_token'] == null){
         this.clienteForm = this.fb.group({
           usercode: ["", [Validators.required, Validators.minLength(5)]]

@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     this.spinner = true;
 
     if(this.usuarioForm.invalid){
-      this.toastr.warning("Debe de llenar correctamente todos los campos.", "Inicio de sesión");
+      this.toastr.warning("Debe de llenar correctamente todos los campos.", "Inicio de sesión", {
+        progressBar: true
+      });
       this.spinner = false;
       return;
     }
@@ -50,10 +52,14 @@ export class LoginComponent implements OnInit {
         }                  
       }, error => {
         if(error.status = 404){
-          this.toastr.error("No se encontró este usuario.", "Inicio de sesion")
+          this.toastr.error("No se encontró este usuario.", "Inicio de sesion", {
+            progressBar: true
+          });
         }
         else
-          this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor");
+          this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor", {
+            progressBar: true
+          });
 
         this.spinner = false;      
       });
@@ -83,10 +89,14 @@ export class LoginComponent implements OnInit {
         }                  
       }, error => {
         if(error.status = 404){
-          this.toastr.error("No se encontró este usuario.", "Inicio de sesion")
+          this.toastr.error("No se encontró este usuario.", "Inicio de sesion", {
+            progressBar: true
+          });
         }
         else
-          this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor");
+          this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor", {
+            progressBar: true
+          });
 
         this.spinner = false;      
       });
