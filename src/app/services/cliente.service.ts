@@ -39,17 +39,17 @@ export class ClienteService {
 
         this.toastr.error("No se encontró este cliente.", "Acesso", {
           progressBar: true
-        })
+        });
       }
       else
-      this.toastr.warning(
-        "Esta cuenta acaba de ser iniciada con otro dispositivo.<br/><br/>Vuelva a iniciar sesión para poder tener acceso.",
-        "Acceso no autorizado", {
-          progressBar: true,
-          timeOut: 9000,
-          enableHtml: true
-        }
-      );
+        this.toastr.warning(
+          "Esta cuenta acaba de ser iniciada con otro dispositivo.<br/><br/>Vuelva a iniciar sesión para poder tener acceso.",
+          "Acceso no autorizado", {
+            progressBar: true,
+            timeOut: 9000,
+            enableHtml: true
+          }
+        );
 
       this.acceso.emit(false);
     })
