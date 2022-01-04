@@ -24,9 +24,17 @@ export class ReporteService {
         this.acceso.emit(true);
       } 
     }, error => {
-      this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor", {
-        progressBar: true
-      });
+      console.log(error)
+      if(error.status === 404){
+        this.toastr.info("No se encontró reportes.", "Reportes", {
+          progressBar: true
+        });
+      }
+      else{
+        this.toastr.error("Hubo un error al intentar completar esta solicitud.", "Error en el servidor", {
+          progressBar: true
+        });
+      }
       this.acceso.emit(false);
     });
   }
