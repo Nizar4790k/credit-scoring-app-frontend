@@ -10,10 +10,32 @@
             <a class="nav-link align-self-center lead text-dark me-3 fw-bold" [routerLink]="['inicio']" routerLinkActive="router-link-active" >Cliente</a>
           </li>
           <li class="nav-item d-flex" *ngIf="token">
-            <button (click)="setReporte()" class="reporte nav-link align-self-center lead text-dark me-3 fw-bold">
-              <span *ngIf="spinner" class="spinner-border spinner-border-sm">
-              </span> Reporte
-            </button>
+            <div class="btn-group me-3 normal">
+              <button (click)="setReporte()" class="reporte nav-link align-self-center lead text-dark fw-bold">
+                <span *ngIf="spinner" class="spinner-border spinner-border-sm">
+                </span> Reporte
+              </button>
+              <button type="button" class="reporte dropdown-toggle dropdown-toggle-split" 
+              data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let anio of aniosSelect"><span (click)="setReporte(anio)" class="dropdown-item text-center fw-bold btn">{{anio}}</span></li>
+              </ul>
+            </div>
+            <div class="btn-group dropend me-3 extra d-none">
+              <button (click)="setReporte()" class="reporte nav-link align-self-center lead text-dark fw-bold">
+                <span *ngIf="spinner" class="spinner-border spinner-border-sm">
+                </span> Reporte
+              </button>
+              <button type="button" class="reporte dropdown-toggle dropdown-toggle-split" 
+              data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropright</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let anio of aniosSelect"><span (click)="setReporte(anio)" class="dropdown-item text-center fw-bold btn">{{anio}}</span></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item d-flex">
             <a class="us nav-link align-self-center lead text-dark me-2 border-start border-secondary ps-4">{{usuario}}<i class="fas fa-user-circle ms-2 text-primary"></i></a>

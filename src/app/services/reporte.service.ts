@@ -16,9 +16,9 @@ export class ReporteService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
-  async getReporte(){
+  async getReporte(anio: number){
 
-    await this.http.get(this.hostUrl + this.reporteUrl, {observe: 'response'}).subscribe(data => {
+    await this.http.get(this.hostUrl + this.reporteUrl + `/${anio}`, {observe: 'response'}).subscribe(data => {
       if(data.status === 200){
         this.reporte = data.body;
         this.acceso.emit(true);

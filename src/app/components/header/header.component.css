@@ -5,11 +5,28 @@
 .spinner-border{
     margin-bottom: 2px; 
 }
+.dropdown-menu{
+    position: absolute; 
+    background-color: rgb(236, 120, 192);
+}
+.dropdown-item:hover{
+    background-color: rgba(243, 171, 198, 0.904);
+}
 
 @media (max-width: 992px) {
     .us{
         border: none !important;
         margin-left: 0 !important;
         padding-left: 0 !important;
+    }
+    .normal{
+        display: none;
+    }
+    .extra{
+        display:flex !important
+    }
+    .dropdown-menu{
+        position: absolute; 
+        background-color: rgb(236, 120, 192);
     }
 }
