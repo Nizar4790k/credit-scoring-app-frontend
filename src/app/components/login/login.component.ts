@@ -85,6 +85,10 @@ export class LoginComponent implements OnInit {
             if(data){
               location.href = "/inicio";
             }
+            else{
+              this.spinner = false;
+              sessionStorage.clear(); 
+            }
           })
         }                  
       }, error => {
