@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Iacceso } from 'src/app/interfaces/iacceso';
 import { ClienteService } from 'src/app/services/cliente.service';
-import * as moment from 'moment';
 
  @Component({
   selector: 'app-inicio',
@@ -15,7 +14,8 @@ export class InicioComponent implements OnInit {
   clienteForm!: FormGroup;
   spinner = false;
   actor = true;
-  constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService) {
+  constructor(private fb: FormBuilder, private router: Router, private clienteServices: ClienteService, 
+    private toastr: ToastrService) {
       if(sessionStorage['auth_token'] == null && sessionStorage['access_token'] == null){
         this.clienteForm = this.fb.group({
           usercode: ["", [Validators.required, Validators.minLength(5)]]
@@ -33,14 +33,21 @@ export class InicioComponent implements OnInit {
   }
 
   verificarTimepoAcceso(){
-    if(sessionStorage['access_token'] != null && sessionStorage['auth_token'] != null){
-      let fecha1 = moment(sessionStorage['fechaLogin']);
-      let fecha2 = moment(new Date());
-      
-      if(fecha2.diff(fecha1, 'minutes') >= 20){
+    if(sessionStorage['access_token'] != null && sessionStorage['auth_token'] != null){      
+      setTimeout(() => {
+        this.toastr.warning(
+          "Por seguridad, su tiempo en sesión acabará en 1 minuto.",
+          "Cierre de sesión", {
+            progressBar: true,
+            timeOut: 60000,
+            enableHtml: true
+          }
+        );
+      }, 1140000);
+      setTimeout(() => {
         sessionStorage.clear();
         location.href = "/login";
-      }
+      }, 1200000);
     }
   }
 
