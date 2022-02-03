@@ -25,9 +25,9 @@ export class AppComponent {
         setTimeout(() => {
           this.toastr.warning(
             "Por seguridad, su tiempo en sesión acabará en 1 minuto.",
-            "Cierre de sesón", {
+            "Cierre de sesión", {
               progressBar: true,
-              timeOut: 5000,
+              timeOut: 9000,
               enableHtml: true
             }
           );
