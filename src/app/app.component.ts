@@ -27,7 +27,7 @@ export class AppComponent {
             "Por seguridad, su tiempo en sesión acabará en 1 minuto.",
             "Cierre de sesión", {
               progressBar: true,
-              timeOut: 9000,
+              timeOut: 10000,
               enableHtml: true
             }
           );
