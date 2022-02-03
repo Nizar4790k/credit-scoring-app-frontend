@@ -24,7 +24,7 @@ export class AppComponent {
       if((1140000 - (tiempo * 60000)) > 0){
         setTimeout(() => {
           this.toastr.warning(
-            "Por seguridad, su tiempo en sesión acabará en 10 segundos.",
+            "Por seguridad, su tiempo en sesión acabará en 1 minuto.",
             "Cierre de sesón", {
               progressBar: true,
               timeOut: 5000,
