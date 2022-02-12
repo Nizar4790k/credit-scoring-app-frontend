@@ -14,7 +14,7 @@ spinner = false;
 
   constructor(private reporteService: ReporteService, private router: Router) { 
     this.usuario = sessionStorage['usuario'];
-    this.token = sessionStorage['access_token'] == null && sessionStorage['auth_token'] == null ? true : false
+    this.token = sessionStorage['access_token'] == null && sessionStorage['auth_token'] == null ? true : false;
   }
 
   ngOnInit(): void {

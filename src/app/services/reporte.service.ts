@@ -24,6 +24,7 @@ export class ReporteService {
         this.acceso.emit(true);
       } 
     }, error => {
+      console.log(error)
       if(error.status === 404){
         this.toastr.info("No se encontró reportes.", "Reportes", {
           progressBar: true

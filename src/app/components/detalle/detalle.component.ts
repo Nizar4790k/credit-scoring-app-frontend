@@ -24,6 +24,10 @@ export class DetalleComponent implements OnInit {
   }
 
   getClienteNombre(){
+<<<<<<< HEAD
+=======
+
+>>>>>>> f20145d4c5b6e5a6a190d192102e30fb523e6579
     if(sessionStorage['clienteNombre'] == "unset"){
       let nombre = this.clienteService.getClientePerfil().FirstName + " ";
       let segundoNombre = this.clienteService.getClientePerfil().MiddleName == null ?  null 

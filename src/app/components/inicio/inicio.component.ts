@@ -17,7 +17,7 @@ export class InicioComponent implements OnInit {
       if(sessionStorage['auth_token'] == null && sessionStorage['access_token'] == null){
         this.clienteForm = this.fb.group({
           usercode: ["", [Validators.required, Validators.minLength(5)]]
-        })
+        });
       }
       else
         this.actor = false;
@@ -56,7 +56,7 @@ export class InicioComponent implements OnInit {
       else{
         this.spinner = false;
       }
-    });
+    })
   }
   
   entradaAlerta(): string{

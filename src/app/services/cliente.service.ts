@@ -41,7 +41,7 @@ export class ClienteService {
           progressBar: true
         });
       }
-      else if(error.status === 401){
+      else
         this.toastr.warning(
           "Esta cuenta acaba de ser iniciada con otro dispositivo.<br/><br/>Vuelva a iniciar sesión para poder tener acceso.",
           "Acceso no autorizado", {
@@ -50,28 +50,6 @@ export class ClienteService {
             enableHtml: true
           }
         );
-      }
-      else if(error.status === 500){
-        this.toastr.error(
-          "Hubo un error en el servidor principal.<br/><br/>Vuelva a intentar más tarde.",
-          "Error en el servidor", {
-            progressBar: true,
-            timeOut: 9000,
-            enableHtml: true
-          }
-        );
-      }
-      else{
-        this.toastr.error(
-          "Hubo un error desconocido.<br/><br/>Vuelva a intentar más tarde.",
-          "Error", {
-            progressBar: true,
-            timeOut: 9000,
-            enableHtml: true
-          }
-        );
-      } 
-    
       this.acceso.emit(false);
     })
   }

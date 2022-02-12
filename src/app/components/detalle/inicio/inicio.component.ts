@@ -56,7 +56,7 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.getPerfil();
   }
 

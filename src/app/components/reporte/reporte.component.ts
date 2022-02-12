@@ -6,7 +6,6 @@ import { ReporteService } from 'src/app/services/reporte.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
  
-
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
@@ -23,7 +22,7 @@ export class ReporteComponent implements OnInit {
   valorTerciario: any = [];
   valorCuarto: any = [];
 
-  constructor(private reporteService: ReporteService, private router: Router,
+  constructor(private reporteService: ReporteService, private router: Router, 
     private toastr: ToastrService) { 
     this.reporte = {
       meses: [],
