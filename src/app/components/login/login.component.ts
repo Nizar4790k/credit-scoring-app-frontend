@@ -43,12 +43,46 @@ export class LoginComponent implements OnInit {
       password: this.usuarioForm.get('pass')?.value
     };
 
-    if(this.boton){
+    await this.evaluarCredenciales(usuario, this.boton)
+  }
+
+  estiloInput(inputName: string): string{
+    let resp = "";
+
+    if(this.usuarioForm.get(inputName)?.invalid && this.usuarioForm.get(inputName)?.touched)
+      resp ="red";
+    else if(this.usuarioForm.get(inputName)?.valid && this.usuarioForm.get(inputName)?.touched) 
+      resp = "green";
+    else
+      resp = "black";
+    
+    return resp;
+  }
+
+  cambiarActor(actor: string){
+    this.cargarForm();
+    if(actor == 'c'){
+      this.boton = false
+    }
+    else{        
+      this.boton = true      
+    }    
+  }
+
+  cargarForm(){
+    this.usuarioForm = this.fb.group({
+      user: ["", [Validators.required, Validators.minLength(5)]],
+      pass: ["", [Validators.required, Validators.minLength(5)]]
+    })  
+  }
+  
+  async evaluarCredenciales(usuario: Iusuario, actor: boolean){
+    if(actor){
       await this.usuarioServices.getExisteUsuario(usuario).subscribe(data => {
         console.log(data.status);
         if(data.status == 200){
           sessionStorage.setItem('usuario', this.usuarioForm.get('user')?.value);
-          location.href = "/inicio";
+          //location.href = "/inicio";
         }                  
       }, error => {
         if(error.status = 404){
@@ -83,7 +117,7 @@ export class LoginComponent implements OnInit {
           this.clienteService.setAccess(acceso);
           this.clienteService.acceso.subscribe(data => {
             if(data){
-              location.href = "/inicio";
+              //location.href = "/inicio";
             }
             else{
               this.spinner = false;
@@ -106,34 +140,5 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-
-  estiloInput(inputName: string): string{
-    let resp = "";
-
-    if(this.usuarioForm.get(inputName)?.invalid && this.usuarioForm.get(inputName)?.touched)
-      resp ="red";
-    else if(this.usuarioForm.get(inputName)?.valid && this.usuarioForm.get(inputName)?.touched) 
-      resp = "green";
-    else
-      resp = "black";
-    
-    return resp;
-  }
-
-  cambiarActor(actor: string){
-    this.cargarForm();
-    if(actor == 'c'){
-      this.boton = false
-    }
-    else{        
-      this.boton = true      
-    }    
-  }
-
-  cargarForm(){
-    this.usuarioForm = this.fb.group({
-      user: ["", [Validators.required, Validators.minLength(5)]],
-      pass: ["", [Validators.required, Validators.minLength(5)]]
-    })  
-  }
 }
+

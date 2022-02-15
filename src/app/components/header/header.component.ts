@@ -28,7 +28,7 @@ spinner = false;
       if(data){
         this.spinner = false;
         sessionStorage.setItem('reporte', "unset");
-        this.router.navigateByUrl('/reporte')
+        //this.router.navigateByUrl('/reporte')
       }
       else{
         this.spinner = false;
@@ -38,6 +38,6 @@ spinner = false;
 
   cerrarSesion(){
     sessionStorage.clear();
-    location.href = "/login";
+    //location.href = "/login";
   }
 }

@@ -156,6 +156,7 @@ export class ReporteComponent implements OnInit {
       "Descarga de reporte", {
         progressBar: true
       });
+      this.spinner = false;
     }
  }
 

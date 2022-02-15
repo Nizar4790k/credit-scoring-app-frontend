@@ -51,7 +51,7 @@ export class InicioComponent implements OnInit {
       if(data){
         sessionStorage.setItem("clienteNombre", "unset");
         sessionStorage.setItem('cliente', "unset");
-        this.router.navigateByUrl('/detalle')
+        //this.router.navigateByUrl('/detalle')
       }
       else{
         this.spinner = false;
